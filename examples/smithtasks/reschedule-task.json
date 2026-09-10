@@ -1,0 +1,80 @@
+{
+  "apiVersion": "invokesmith.dev/v0alpha1",
+  "kind": "Action",
+  "metadata": {
+    "id": "dev.smithtasks.tasks.reschedule",
+    "version": "0.1.0",
+    "title": "Reschedule task"
+  },
+  "spec": {
+    "description": "Move a task to a new due date while preserving explicit time-zone and recurrence semantics.",
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["taskId", "dueAt", "timeZone", "idempotencyKey"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "dueAt": { "type": "string", "format": "date-time" },
+        "timeZone": { "type": "string", "description": "IANA time-zone identifier." },
+        "recurrenceMode": { "enum": ["this_occurrence", "this_and_future"] },
+        "idempotencyKey": { "type": "string", "minLength": 16 }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["taskId", "previousDueAt", "dueAt", "auditReceipt"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "previousDueAt": { "type": ["string", "null"], "format": "date-time" },
+        "dueAt": { "type": "string", "format": "date-time" },
+        "auditReceipt": { "type": "string" }
+      }
+    },
+    "errors": [
+      { "code": "TASK_NOT_FOUND", "description": "The task does not exist or is not visible.", "retryable": false },
+      { "code": "RECURRENCE_AMBIGUOUS", "description": "A recurring task requires recurrenceMode.", "retryable": false }
+    ],
+    "authorization": {
+      "required": true,
+      "scopes": ["tasks:write"],
+      "actor": "user"
+    },
+    "effects": {
+      "classifications": ["reversible"],
+      "description": "Changes the task due date and can be compensated by restoring its previous schedule.",
+      "compensationAction": "dev.smithtasks.tasks.restore_schedule"
+    },
+    "confirmation": { "required": false },
+    "idempotency": { "mode": "key_required", "keyField": "idempotencyKey", "retrySafe": true },
+    "audit": { "receiptRequired": true },
+    "scenarios": [
+      {
+        "id": "reschedule-across-time-zones",
+        "description": "Preserve the requested Chicago wall-clock time and return the previous date.",
+        "given": { "fixture": "task-123-due-in-new-york" },
+        "input": {
+          "taskId": "task-123",
+          "dueAt": "2026-09-15T09:00:00-05:00",
+          "timeZone": "America/Chicago",
+          "idempotencyKey": "01J7INVOKESMITHDEMO"
+        },
+        "expect": {
+          "result": "success",
+          "state": {
+            "tasks.task-123.dueAt": "2026-09-15T09:00:00-05:00",
+            "tasks.task-123.timeZone": "America/Chicago"
+          },
+          "unchanged": [
+            "tasks.task-123.title",
+            "tasks.task-123.projectId",
+            "tasks.task-123.ownerId",
+            "tasks.task-123.status",
+            "tasks.task-private",
+            "tasks.task-456"
+          ],
+          "auditReceipt": true
+        }
+      }
+    ]
+  }
+}

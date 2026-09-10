@@ -1,0 +1,19 @@
+{
+  "case": "OG-001",
+  "title": "Cross-tenant ghost write",
+  "baseline": {
+    "status": "passed",
+    "reason": "The tool is discoverable, returns success, identifies task-123, and reports the requested due date. The baseline does not inspect unrelated authoritative state."
+  },
+  "buggyOutcomeProof": {
+    "status": "failed",
+    "requiredAssertion": "state.tasks.task-private.unchanged"
+  },
+  "fixedOutcomeProof": {
+    "status": "passed"
+  },
+  "releaseDecision": {
+    "status": "approved",
+    "evidenceSource": "outcome-gap-fixed@0.1.0"
+  }
+}

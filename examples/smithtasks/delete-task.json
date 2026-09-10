@@ -1,0 +1,67 @@
+{
+  "apiVersion": "invokesmith.dev/v0alpha1",
+  "kind": "Action",
+  "metadata": {
+    "id": "dev.smithtasks.tasks.delete",
+    "version": "0.1.0",
+    "title": "Delete task"
+  },
+  "spec": {
+    "description": "Move a task to trash after informed confirmation and return a recoverable audit receipt.",
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["taskId", "idempotencyKey"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "idempotencyKey": { "type": "string", "minLength": 16 }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["taskId", "deletedAt", "recoverableUntil", "auditReceipt"],
+      "properties": {
+        "taskId": { "type": "string" },
+        "deletedAt": { "type": "string", "format": "date-time" },
+        "recoverableUntil": { "type": "string", "format": "date-time" },
+        "auditReceipt": { "type": "string" }
+      }
+    },
+    "errors": [
+      { "code": "TASK_NOT_FOUND", "description": "The task does not exist or is not visible.", "retryable": false },
+      { "code": "TASK_ALREADY_DELETED", "description": "The task is already in trash.", "retryable": false }
+    ],
+    "authorization": {
+      "required": true,
+      "scopes": ["tasks:delete"],
+      "actor": "user"
+    },
+    "effects": {
+      "classifications": ["destructive"],
+      "description": "Removes the task from active views and places it in trash for 30 days.",
+      "recoveryWindow": "P30D"
+    },
+    "confirmation": {
+      "required": true,
+      "prompt": "Delete task {{input.taskId}}? It will remain recoverable from trash for 30 days.",
+      "facts": ["input.taskId", "recoveryWindow"]
+    },
+    "idempotency": { "mode": "key_required", "keyField": "idempotencyKey", "retrySafe": true },
+    "audit": { "receiptRequired": true },
+    "scenarios": [
+      {
+        "id": "delete-owned-task-after-confirmation",
+        "description": "Move an owned task to trash only after the user confirms the named task.",
+        "given": { "fixture": "owned-task-123", "confirmation": "accepted" },
+        "input": { "taskId": "task-123", "idempotencyKey": "01J7DELETEDEMO00" },
+        "expect": {
+          "result": "success",
+          "state": { "tasks.task-123.status": "trash" },
+          "unchanged": ["tasks.task-private", "tasks.task-456"],
+          "auditReceipt": true,
+          "recoveryWindow": "P30D"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@invokesmith/observations",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@invokesmith/compiler": "workspace:*",
+    "@invokesmith/contract": "workspace:*"
+  },
+  "license": "Apache-2.0"
+}

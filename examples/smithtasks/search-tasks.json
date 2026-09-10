@@ -1,0 +1,60 @@
+{
+  "apiVersion": "invokesmith.dev/v0alpha1",
+  "kind": "Action",
+  "metadata": {
+    "id": "dev.smithtasks.tasks.search",
+    "version": "0.1.0",
+    "title": "Search tasks"
+  },
+  "spec": {
+    "description": "Find tasks visible to the acting user using text and optional filters.",
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query"],
+      "properties": {
+        "query": { "type": "string", "minLength": 1 },
+        "projectId": { "type": "string" },
+        "dueBefore": { "type": "string", "format": "date-time" },
+        "cursor": { "type": "string" }
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["tasks"],
+      "properties": {
+        "tasks": { "type": "array", "items": { "type": "object" } },
+        "nextCursor": { "type": ["string", "null"] }
+      }
+    },
+    "errors": [
+      { "code": "NOT_AUTHORIZED", "description": "The actor cannot search the requested project.", "retryable": false }
+    ],
+    "authorization": {
+      "required": true,
+      "scopes": ["tasks:read"],
+      "actor": "user"
+    },
+    "effects": {
+      "classifications": ["read_only"],
+      "description": "Reads task metadata without modifying application state."
+    },
+    "confirmation": { "required": false },
+    "idempotency": { "mode": "natural", "retrySafe": true },
+    "audit": { "receiptRequired": false },
+    "scenarios": [
+      {
+        "id": "find-overdue-roadmap-task",
+        "description": "Return the matching task without exposing a private project.",
+        "given": { "fixture": "mixed-visibility-tasks" },
+        "input": { "query": "roadmap", "dueBefore": "2026-09-11T00:00:00-05:00" },
+        "expect": {
+          "result": "success",
+          "taskIds": ["task-123"],
+          "excludedTaskIds": ["task-private"],
+          "unchanged": ["tasks", "idempotency", "audit"]
+        }
+      }
+    ]
+  }
+}

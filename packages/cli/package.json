@@ -1,0 +1,19 @@
+{
+  "name": "@invokesmith/cli",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@invokesmith/compiler": "workspace:*",
+    "@invokesmith/contract": "workspace:*",
+    "@invokesmith/authzen": "workspace:*",
+    "@invokesmith/evidence": "workspace:*",
+    "@invokesmith/policy": "workspace:*",
+    "@invokesmith/policy-status": "workspace:*",
+    "@invokesmith/release": "workspace:*",
+    "@invokesmith/signing": "workspace:*",
+    "@invokesmith/testplan": "workspace:*",
+    "@invokesmith/target-mcp": "workspace:*"
+  },
+  "license": "Apache-2.0"
+}

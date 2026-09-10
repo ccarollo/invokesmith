@@ -1,0 +1,28 @@
+{
+  "subject": {
+    "type": "user",
+    "id": "user-123",
+    "properties": {
+      "scopes": ["tasks:write"],
+      "tenantId": "tenant-demo"
+    }
+  },
+  "action": {
+    "name": "dev.smithtasks.tasks.reschedule"
+  },
+  "resource": {
+    "type": "task",
+    "id": "task-123",
+    "properties": {
+      "ownerId": "user-123",
+      "tenantId": "tenant-demo"
+    }
+  },
+  "context": {
+    "invokesmith": {
+      "environment": "test",
+      "caller": { "type": "user", "id": "user-123" },
+      "idempotencyKey": "01J7INVOKESMITHDEMO"
+    }
+  }
+}

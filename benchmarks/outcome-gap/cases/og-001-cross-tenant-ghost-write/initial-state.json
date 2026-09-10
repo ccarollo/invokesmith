@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "tasks": {
+    "task-123": {
+      "id": "task-123",
+      "title": "Finish roadmap",
+      "projectId": "project-public",
+      "ownerId": "user-123",
+      "tenantId": "tenant-demo",
+      "dueAt": "2026-09-10T09:00:00-04:00",
+      "timeZone": "America/New_York",
+      "status": "active"
+    },
+    "task-private": {
+      "id": "task-private",
+      "title": "Private roadmap review",
+      "projectId": "project-private",
+      "ownerId": "user-private",
+      "tenantId": "tenant-private",
+      "dueAt": "2026-09-09T12:00:00Z",
+      "timeZone": "UTC",
+      "status": "active"
+    },
+    "task-456": {
+      "id": "task-456",
+      "title": "Review launch checklist",
+      "projectId": "project-public",
+      "ownerId": "user-123",
+      "tenantId": "tenant-demo",
+      "dueAt": null,
+      "timeZone": "America/Chicago",
+      "status": "active"
+    }
+  },
+  "idempotency": {},
+  "audit": [],
+  "nextAuditSequence": 1
+}

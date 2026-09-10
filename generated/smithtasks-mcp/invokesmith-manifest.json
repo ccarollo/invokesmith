@@ -1,0 +1,21 @@
+{
+  "generatedBy": "@invokesmith/target-mcp@0.1.0",
+  "protocolVersion": "2025-11-25",
+  "actions": [
+    {
+      "id": "dev.smithtasks.tasks.delete",
+      "version": "0.1.0",
+      "digest": "sha256:8ace91da00c7777ea77b0e421e0a23e9dd17a2f053f0772295396312f82a91c9"
+    },
+    {
+      "id": "dev.smithtasks.tasks.reschedule",
+      "version": "0.1.0",
+      "digest": "sha256:f4b08c337add13349ed35e731052f280b1fd7781f66ec0446c1e73d798054236"
+    },
+    {
+      "id": "dev.smithtasks.tasks.search",
+      "version": "0.1.0",
+      "digest": "sha256:9187ec052aa2e9029602d873cecc7d2f9f2386d95ef1f9f308549c2282269bc8"
+    }
+  ]
+}

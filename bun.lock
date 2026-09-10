@@ -1,0 +1,229 @@
+{
+  "lockfileVersion": 1,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "invokesmith-technology",
+      "devDependencies": {
+        "@modelcontextprotocol/client": "2.0.0",
+        "@modelcontextprotocol/core": "2.0.0",
+        "@modelcontextprotocol/server": "2.0.0",
+        "@types/bun": "1.3.4",
+        "@types/node": "24.10.2",
+        "ajv": "8.20.0",
+        "ajv-formats": "3.0.1",
+        "typescript": "5.9.3",
+        "zod": "4.5.4",
+      },
+    },
+    "packages/authzen": {
+      "name": "@invokesmith/authzen",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/policy": "workspace:*",
+      },
+    },
+    "packages/cli": {
+      "name": "@invokesmith/cli",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/authzen": "workspace:*",
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/contract": "workspace:*",
+        "@invokesmith/evidence": "workspace:*",
+        "@invokesmith/policy": "workspace:*",
+        "@invokesmith/policy-status": "workspace:*",
+        "@invokesmith/release": "workspace:*",
+        "@invokesmith/signing": "workspace:*",
+        "@invokesmith/target-mcp": "workspace:*",
+        "@invokesmith/testplan": "workspace:*",
+      },
+    },
+    "packages/compiler": {
+      "name": "@invokesmith/compiler",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/contract": "workspace:*",
+        "ajv": "8.20.0",
+      },
+    },
+    "packages/contract": {
+      "name": "@invokesmith/contract",
+      "version": "0.0.1",
+    },
+    "packages/enforcement": {
+      "name": "@invokesmith/enforcement",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/authzen": "workspace:*",
+        "@invokesmith/policy": "workspace:*",
+        "@invokesmith/policy-status": "workspace:*",
+        "@invokesmith/signing": "workspace:*",
+        "@invokesmith/smithtasks-runtime": "workspace:*",
+      },
+    },
+    "packages/evidence": {
+      "name": "@invokesmith/evidence",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/testplan": "workspace:*",
+      },
+    },
+    "packages/observations": {
+      "name": "@invokesmith/observations",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/contract": "workspace:*",
+      },
+    },
+    "packages/plugin-sdk": {
+      "name": "@invokesmith/plugin-sdk",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+      },
+    },
+    "packages/policy": {
+      "name": "@invokesmith/policy",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/evidence": "workspace:*",
+      },
+    },
+    "packages/policy-status": {
+      "name": "@invokesmith/policy-status",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/policy": "workspace:*",
+        "@invokesmith/signing": "workspace:*",
+      },
+    },
+    "packages/release": {
+      "name": "@invokesmith/release",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/evidence": "workspace:*",
+        "@invokesmith/policy": "workspace:*",
+        "@invokesmith/policy-status": "workspace:*",
+        "@invokesmith/signing": "workspace:*",
+      },
+    },
+    "packages/signing": {
+      "name": "@invokesmith/signing",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/evidence": "workspace:*",
+        "@invokesmith/policy": "workspace:*",
+      },
+    },
+    "packages/smithtasks-runtime": {
+      "name": "@invokesmith/smithtasks-runtime",
+      "version": "0.0.1",
+    },
+    "packages/testplan": {
+      "name": "@invokesmith/testplan",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/contract": "workspace:*",
+        "@invokesmith/observations": "workspace:*",
+        "@invokesmith/smithtasks-runtime": "workspace:*",
+        "@modelcontextprotocol/client": "2.0.0",
+      },
+    },
+    "plugins/target-mcp": {
+      "name": "@invokesmith/target-mcp",
+      "version": "0.0.1",
+      "dependencies": {
+        "@invokesmith/compiler": "workspace:*",
+        "@invokesmith/plugin-sdk": "workspace:*",
+      },
+    },
+  },
+  "packages": {
+    "@invokesmith/authzen": ["@invokesmith/authzen@workspace:packages/authzen"],
+
+    "@invokesmith/cli": ["@invokesmith/cli@workspace:packages/cli"],
+
+    "@invokesmith/compiler": ["@invokesmith/compiler@workspace:packages/compiler"],
+
+    "@invokesmith/contract": ["@invokesmith/contract@workspace:packages/contract"],
+
+    "@invokesmith/enforcement": ["@invokesmith/enforcement@workspace:packages/enforcement"],
+
+    "@invokesmith/evidence": ["@invokesmith/evidence@workspace:packages/evidence"],
+
+    "@invokesmith/observations": ["@invokesmith/observations@workspace:packages/observations"],
+
+    "@invokesmith/plugin-sdk": ["@invokesmith/plugin-sdk@workspace:packages/plugin-sdk"],
+
+    "@invokesmith/policy": ["@invokesmith/policy@workspace:packages/policy"],
+
+    "@invokesmith/policy-status": ["@invokesmith/policy-status@workspace:packages/policy-status"],
+
+    "@invokesmith/release": ["@invokesmith/release@workspace:packages/release"],
+
+    "@invokesmith/signing": ["@invokesmith/signing@workspace:packages/signing"],
+
+    "@invokesmith/smithtasks-runtime": ["@invokesmith/smithtasks-runtime@workspace:packages/smithtasks-runtime"],
+
+    "@invokesmith/target-mcp": ["@invokesmith/target-mcp@workspace:plugins/target-mcp"],
+
+    "@invokesmith/testplan": ["@invokesmith/testplan@workspace:packages/testplan"],
+
+    "@modelcontextprotocol/client": ["@modelcontextprotocol/client@2.0.0", "", { "dependencies": { "@modelcontextprotocol/core": "2.0.0", "cross-spawn": "^7.0.5", "eventsource": "^3.0.2", "eventsource-parser": "^3.0.0", "jose": "^6.1.3", "pkce-challenge": "^5.0.0", "zod": "^4.2.0" } }, "sha512-8f1OghQ2rjzIOfqgUCP+8GiUWqRs89njoWLNqAe8kWmDePv3s1fZXseej+QXemssEuuOvLLmLO/kqM3IQHtISw=="],
+
+    "@modelcontextprotocol/core": ["@modelcontextprotocol/core@2.0.0", "", { "dependencies": { "zod": "^4.2.0" } }, "sha512-pJCEwGG7Lfr/+PQp9ZTwKXNeO5wzbfKL7H3MYpCorM4oFBoQrdjnBgEoqG+RjhsvS1FKrDbKux+M1HhlnGWqcA=="],
+
+    "@modelcontextprotocol/server": ["@modelcontextprotocol/server@2.0.0", "", { "dependencies": { "@modelcontextprotocol/core": "2.0.0", "zod": "^4.2.0" } }, "sha512-YhHWdHfpFMQfd0prsEnxKeS3Qz3ytIGmsS0sth4KDjnacIT7hxk6hXHkJ9KysxlkvTM+WZAtQbbcUhdoP4Hvtw=="],
+
+    "@types/bun": ["@types/bun@1.3.4", "", { "dependencies": { "bun-types": "1.3.4" } }, "sha512-EEPTKXHP+zKGPkhRLv+HI0UEX8/o+65hqARxLy8Ov5rIxMBPNTjeZww00CIihrIQGEQBYg+0roO5qOnS/7boGA=="],
+
+    "@types/node": ["@types/node@24.10.2", "", { "dependencies": { "undici-types": "~7.16.0" } }, "sha512-WOhQTZ4G8xZ1tjJTvKOpyEVSGgOTvJAfDK3FNFgELyaTpzhdgHVHeqW8V+UJvzF5BT+/B54T/1S2K6gd9c7bbA=="],
+
+    "ajv": ["ajv@8.20.0", "", { "dependencies": { "fast-deep-equal": "^3.1.3", "fast-uri": "^3.0.1", "json-schema-traverse": "^1.0.0", "require-from-string": "^2.0.2" } }, "sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA=="],
+
+    "ajv-formats": ["ajv-formats@3.0.1", "", { "dependencies": { "ajv": "^8.0.0" } }, "sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ=="],
+
+    "bun-types": ["bun-types@1.3.4", "", { "dependencies": { "@types/node": "*" } }, "sha512-5ua817+BZPZOlNaRgGBpZJOSAQ9RQ17pkwPD0yR7CfJg+r8DgIILByFifDTa+IPDDxzf5VNhtNlcKqFzDgJvlQ=="],
+
+    "cross-spawn": ["cross-spawn@7.0.6", "", { "dependencies": { "path-key": "^3.1.0", "shebang-command": "^2.0.0", "which": "^2.0.1" } }, "sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA=="],
+
+    "eventsource": ["eventsource@3.0.7", "", { "dependencies": { "eventsource-parser": "^3.0.1" } }, "sha512-CRT1WTyuQoD771GW56XEZFQ/ZoSfWid1alKGDYMmkt2yl8UXrVR4pspqWNEcqKvVIzg6PAltWjxcSSPrboA4iA=="],
+
+    "eventsource-parser": ["eventsource-parser@3.1.1", "", {}, "sha512-EKN1vKAMcZ8MlYMpaNuxN6R9yakzH6uajHcHVTqWJzvu5pWw9DyhbP35HH8MVBQ+dZjAfDxk+A8NiR9KWaXiyQ=="],
+
+    "fast-deep-equal": ["fast-deep-equal@3.1.3", "", {}, "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q=="],
+
+    "fast-uri": ["fast-uri@3.1.7", "", {}, "sha512-dOvZVzjdZdz7phd9v6jCbwxrBW3fK6n8Rc0CtdmM4bumzMnxywBYhuph6J819RRw/ku+rLbelwfMunktuzVVHg=="],
+
+    "isexe": ["isexe@2.0.0", "", {}, "sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw=="],
+
+    "jose": ["jose@6.2.12", "", {}, "sha512-9NiFmJEex0sy2Dk58j2UGBSHgUs2ypF9eZSu4L6vjOX3Dp96Sw1F3uL+H+D1sx02jZZdzUT0HgvCy59CuvXcWw=="],
+
+    "json-schema-traverse": ["json-schema-traverse@1.0.0", "", {}, "sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug=="],
+
+    "path-key": ["path-key@3.1.1", "", {}, "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="],
+
+    "pkce-challenge": ["pkce-challenge@5.0.1", "", {}, "sha512-wQ0b/W4Fr01qtpHlqSqspcj3EhBvimsdh0KlHhH8HRZnMsEa0ea2fTULOXOS9ccQr3om+GcGRk4e+isrZWV8qQ=="],
+
+    "require-from-string": ["require-from-string@2.0.2", "", {}, "sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw=="],
+
+    "shebang-command": ["shebang-command@2.0.0", "", { "dependencies": { "shebang-regex": "^3.0.0" } }, "sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA=="],
+
+    "shebang-regex": ["shebang-regex@3.0.0", "", {}, "sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A=="],
+
+    "typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
+
+    "undici-types": ["undici-types@7.16.0", "", {}, "sha512-Zz+aZWSj8LE6zoxD+xrjh4VfkIG8Ya6LvYkZqtUQGJPZjYl53ypCaUwWqo7eI0x66KBGeRo+mlBEkMSeSZ38Nw=="],
+
+    "which": ["which@2.0.2", "", { "dependencies": { "isexe": "^2.0.0" }, "bin": { "node-which": "./bin/node-which" } }, "sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA=="],
+
+    "zod": ["zod@4.5.4", "", {}, "sha512-sC95tT5iHHH9gtpj6A81kh+NEaRAUFN+qlUPDUbRfOMvNf5QCBqsb3WgvnpVtK5Y+4UfA6KqufotuTvMGiTlsA=="],
+  }
+}

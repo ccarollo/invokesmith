@@ -1,0 +1,15 @@
+{
+  "name": "@invokesmith/release",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@invokesmith/compiler": "workspace:*",
+    "@invokesmith/evidence": "workspace:*",
+    "@invokesmith/policy": "workspace:*",
+    "@invokesmith/policy-status": "workspace:*",
+    "@invokesmith/signing": "workspace:*"
+  },
+  "license": "Apache-2.0"
+}

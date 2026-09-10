@@ -1,0 +1,12 @@
+{
+  "name": "@invokesmith/policy-status",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@invokesmith/policy": "workspace:*",
+    "@invokesmith/signing": "workspace:*"
+  },
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,11 @@
+{
+  "name": "@invokesmith/plugin-sdk",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "dependencies": {
+    "@invokesmith/compiler": "workspace:*"
+  },
+  "license": "Apache-2.0"
+}

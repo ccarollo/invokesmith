@@ -1,0 +1,47 @@
+{
+  "name": "invokesmith-technology",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Authoritative outcome verification and policy evidence for consequential MCP actions",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccarollo/invokesmith.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ccarollo/invokesmith/issues"
+  },
+  "packageManager": "bun@1.3.4",
+  "workspaces": [
+    "packages/*",
+    "plugins/*"
+  ],
+  "bin": {
+    "invokesmith": "./dist/invokesmith.js"
+  },
+  "scripts": {
+    "build": "bun build ./packages/cli/src/index.ts --target=node --outfile=./dist/invokesmith.js",
+    "check": "tsc --noEmit",
+    "test": "bun test",
+    "test:outcome-engine": "bun test ./tests/outcome-observation.test.ts ./tests/outcome-evidence.test.ts ./tests/outcome-cli.test.ts",
+    "test:policy-stack": "bun test ./tests/policy-compilation.test.ts ./tests/authzen.test.ts ./tests/enforcement.test.ts ./tests/release-signing.test.ts ./tests/policy-cli.test.ts",
+    "test:outcomes": "bun run ./packages/cli/src/index.ts test --outcome --server ./generated/smithtasks-mcp --release smithtasks-development --environment development --evidence ./.invokesmith/outcome-evidence.json ./examples/smithtasks/search-tasks.json ./examples/smithtasks/reschedule-task.json ./examples/smithtasks/delete-task.json",
+    "demo:proof": "bun run ./benchmarks/outcome-gap/run.ts",
+    "benchmark:outcome-gap": "bun run ./benchmarks/outcome-gap/run.ts",
+    "start:demo": "INVOKESMITH_ACTOR_ID=user-123 INVOKESMITH_ACTOR_TYPE=user INVOKESMITH_TENANT_ID=tenant-demo INVOKESMITH_SCOPES='tasks:read tasks:write tasks:delete' INVOKESMITH_SMITH_TASKS_STATE=./.invokesmith/smithtasks-demo.json bun run ./generated/smithtasks-mcp/src/server.ts",
+    "validate:examples": "bun run ./packages/cli/src/index.ts validate ./examples/smithtasks/search-tasks.json ./examples/smithtasks/reschedule-task.json ./examples/smithtasks/delete-task.json",
+    "generate:examples": "bun run ./packages/cli/src/index.ts generate --target mcp --out ./generated/smithtasks-mcp ./examples/smithtasks/search-tasks.json ./examples/smithtasks/reschedule-task.json ./examples/smithtasks/delete-task.json"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.0.0",
+    "@modelcontextprotocol/core": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "@types/bun": "1.3.4",
+    "@types/node": "24.10.2",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "typescript": "5.9.3",
+    "zod": "4.5.4"
+  },
+  "license": "Apache-2.0"
+}

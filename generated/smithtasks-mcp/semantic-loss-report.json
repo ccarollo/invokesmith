@@ -1,0 +1,142 @@
+{
+  "target": "mcp",
+  "protocolVersion": "2025-11-25",
+  "findings": [
+    {
+      "code": "MCP-ANNOTATIONS-UNTRUSTED",
+      "actionId": "dev.smithtasks.tasks.delete",
+      "feature": "effects",
+      "support": "informational",
+      "severity": "warning",
+      "message": "MCP tool annotations preserve effect hints, but clients must treat them as untrusted metadata."
+    },
+    {
+      "code": "MCP-AUDIT-RUNTIME",
+      "actionId": "dev.smithtasks.tasks.delete",
+      "feature": "audit-receipt",
+      "support": "emulated",
+      "severity": "warning",
+      "message": "The output schema advertises the receipt; durable audit storage belongs in the application handler."
+    },
+    {
+      "code": "MCP-AUTH-RUNTIME",
+      "actionId": "dev.smithtasks.tasks.delete",
+      "feature": "authorization",
+      "support": "emulated",
+      "severity": "warning",
+      "message": "Required actor and scopes are preserved in metadata; the generated handler must enforce them at runtime."
+    },
+    {
+      "code": "MCP-CONFIRMATION-ELICITATION",
+      "actionId": "dev.smithtasks.tasks.delete",
+      "feature": "confirmation",
+      "support": "portable",
+      "severity": "info",
+      "message": "Confirmation is enforced through MCP elicitation; the SDK's compatibility layer also supports the next multi-round-trip input_required flow."
+    },
+    {
+      "code": "MCP-IDEMPOTENCY-RUNTIME",
+      "actionId": "dev.smithtasks.tasks.delete",
+      "feature": "idempotency",
+      "support": "emulated",
+      "severity": "warning",
+      "message": "The idempotencyKey key is schema-visible; durable deduplication belongs in the application handler."
+    },
+    {
+      "code": "MCP-SCENARIOS-HARNESS",
+      "actionId": "dev.smithtasks.tasks.delete",
+      "feature": "behavioral-scenarios",
+      "support": "emulated",
+      "severity": "info",
+      "message": "Contract scenarios become conformance-test inputs because MCP tool discovery has no behavioral scenario field."
+    },
+    {
+      "code": "MCP-SCHEMA-PORTABLE",
+      "actionId": "dev.smithtasks.tasks.delete",
+      "feature": "input-output-schema",
+      "support": "portable",
+      "severity": "info",
+      "message": "Input and output JSON Schemas are emitted directly as MCP tool schemas."
+    },
+    {
+      "code": "MCP-ANNOTATIONS-UNTRUSTED",
+      "actionId": "dev.smithtasks.tasks.reschedule",
+      "feature": "effects",
+      "support": "informational",
+      "severity": "warning",
+      "message": "MCP tool annotations preserve effect hints, but clients must treat them as untrusted metadata."
+    },
+    {
+      "code": "MCP-AUDIT-RUNTIME",
+      "actionId": "dev.smithtasks.tasks.reschedule",
+      "feature": "audit-receipt",
+      "support": "emulated",
+      "severity": "warning",
+      "message": "The output schema advertises the receipt; durable audit storage belongs in the application handler."
+    },
+    {
+      "code": "MCP-AUTH-RUNTIME",
+      "actionId": "dev.smithtasks.tasks.reschedule",
+      "feature": "authorization",
+      "support": "emulated",
+      "severity": "warning",
+      "message": "Required actor and scopes are preserved in metadata; the generated handler must enforce them at runtime."
+    },
+    {
+      "code": "MCP-IDEMPOTENCY-RUNTIME",
+      "actionId": "dev.smithtasks.tasks.reschedule",
+      "feature": "idempotency",
+      "support": "emulated",
+      "severity": "warning",
+      "message": "The idempotencyKey key is schema-visible; durable deduplication belongs in the application handler."
+    },
+    {
+      "code": "MCP-SCENARIOS-HARNESS",
+      "actionId": "dev.smithtasks.tasks.reschedule",
+      "feature": "behavioral-scenarios",
+      "support": "emulated",
+      "severity": "info",
+      "message": "Contract scenarios become conformance-test inputs because MCP tool discovery has no behavioral scenario field."
+    },
+    {
+      "code": "MCP-SCHEMA-PORTABLE",
+      "actionId": "dev.smithtasks.tasks.reschedule",
+      "feature": "input-output-schema",
+      "support": "portable",
+      "severity": "info",
+      "message": "Input and output JSON Schemas are emitted directly as MCP tool schemas."
+    },
+    {
+      "code": "MCP-ANNOTATIONS-UNTRUSTED",
+      "actionId": "dev.smithtasks.tasks.search",
+      "feature": "effects",
+      "support": "informational",
+      "severity": "warning",
+      "message": "MCP tool annotations preserve effect hints, but clients must treat them as untrusted metadata."
+    },
+    {
+      "code": "MCP-AUTH-RUNTIME",
+      "actionId": "dev.smithtasks.tasks.search",
+      "feature": "authorization",
+      "support": "emulated",
+      "severity": "warning",
+      "message": "Required actor and scopes are preserved in metadata; the generated handler must enforce them at runtime."
+    },
+    {
+      "code": "MCP-SCENARIOS-HARNESS",
+      "actionId": "dev.smithtasks.tasks.search",
+      "feature": "behavioral-scenarios",
+      "support": "emulated",
+      "severity": "info",
+      "message": "Contract scenarios become conformance-test inputs because MCP tool discovery has no behavioral scenario field."
+    },
+    {
+      "code": "MCP-SCHEMA-PORTABLE",
+      "actionId": "dev.smithtasks.tasks.search",
+      "feature": "input-output-schema",
+      "support": "portable",
+      "severity": "info",
+      "message": "Input and output JSON Schemas are emitted directly as MCP tool schemas."
+    }
+  ]
+}

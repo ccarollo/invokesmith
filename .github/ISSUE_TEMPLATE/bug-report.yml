@@ -1,0 +1,43 @@
+name: Bug report
+description: Report reproducible incorrect behavior in InvokeSmith
+title: "bug: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not report vulnerabilities here. Use the private security-advisory flow described in SECURITY.md.
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: What happened, and what should have happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Include a synthetic action contract, command, and stable diagnostic if available. Remove customer data and credentials.
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: InvokeSmith revision
+      placeholder: Commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Affected boundary
+      options:
+        - Contract or compiler
+        - Generated MCP target
+        - Outcome or observation
+        - Evidence or signing
+        - Policy or enforcement
+        - Release decision
+        - Documentation or website
+    validations:
+      required: true

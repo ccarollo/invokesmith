@@ -1,0 +1,25 @@
+name: InvokeSmith outcomes
+
+on:
+  pull_request:
+  push:
+
+jobs:
+  deterministic-outcomes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.4
+      - run: bun install --frozen-lockfile
+      - run: bun run check
+      - run: bun test
+      - run: bun run generate:examples
+      - run: bun run test:outcomes
+      - run: bun run benchmark:outcome-gap
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: invokesmith-outcome-evidence
+          path: .invokesmith/outcome-evidence.json
