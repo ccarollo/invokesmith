@@ -4,6 +4,7 @@ dist/
 .DS_Store
 .invokesmith/
 .scratch/
+/ROADMAP.md
 .env
 .env.*
 !.env.example

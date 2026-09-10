@@ -130,8 +130,6 @@ Run the reference MCP server directly with `bun run start:demo`. See the [SmithT
 
 The local proof engine and reference enforcement stack are the product's open-source foundation. A future managed product may coordinate team evidence history, release approvals, customer-controlled runners, policy lifecycle operations, and audit integrations. Those capabilities are demand-gated; they are not required to use the open-source project and are not promises that every platform compiler will be built.
 
-See the [public roadmap](ROADMAP.md) for the evidence gates that determine what comes next.
-
 ## Current limits
 
 InvokeSmith currently targets MCP and reads authored JSON contracts. YAML/OpenAPI import, production OAuth/token validation, managed key storage, remote runners, hosted evidence retention, a production gateway, WebMCP, and non-MCP compilers are outside the current release. We will add a new surface only after partner evidence shows that semantic portability solves a real workflow problem.
