@@ -27,17 +27,19 @@ InvokeSmith follows semantic versioning for the CLI package. During the develope
 
 The CLI reads its version from the root `package.json`, so `invokesmith --version` and the npm artifact cannot drift when the normal build runs.
 
-## First publication
+## Publishing a prerelease
 
-Before publishing, an InvokeSmith maintainer must own or create the `invokesmith` package on npm and enable two-factor authentication. Prefer npm trusted publishing from this GitHub repository so releases can use short-lived identity rather than a long-lived automation token.
+An InvokeSmith maintainer must have two-factor authentication enabled on npm. Prefer npm trusted publishing from this GitHub repository so releases can use short-lived identity rather than a long-lived automation token and receive automatic provenance.
 
 Until trusted publishing is configured, publication is intentionally manual and must be run only after the release commit and tag are reviewed:
 
 ```sh
-npm publish --access public --provenance --tag next
+npm publish --access public --tag next
 ```
 
-Use the `next` distribution tag for alpha releases. Do not move `latest` to an alpha release. After publication, verify the consumer path from outside the repository:
+Local publication cannot produce npm provenance; do not pass `--provenance` outside a supported cloud CI/CD runner. Use the `next` distribution tag for alpha releases. npm may also initialize `latest` to the only available version when a package is published for the first time; move `latest` to the first stable release as soon as one exists.
+
+After publication, verify the consumer path from outside the repository:
 
 ```sh
 npx invokesmith@next --version

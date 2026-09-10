@@ -13,7 +13,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ccarollo/invokesmith.git"
+    "url": "git+https://github.com/ccarollo/invokesmith.git"
   },
   "bugs": {
     "url": "https://github.com/ccarollo/invokesmith/issues"
@@ -35,7 +35,7 @@
     "plugins/*"
   ],
   "bin": {
-    "invokesmith": "./dist/invokesmith.js"
+    "invokesmith": "dist/invokesmith.js"
   },
   "scripts": {
     "build": "bun build ./packages/cli/src/index.ts --target=node --outfile=./dist/invokesmith.js",
