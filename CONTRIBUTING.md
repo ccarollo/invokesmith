@@ -15,6 +15,7 @@ InvokeSmith is an early developer preview. The most useful contributions make a 
 bun install
 bun run check
 bun test
+bun run package:check
 bun run generate:examples
 bun run test:outcomes
 ```
@@ -29,6 +30,7 @@ Generated output is reviewable source. If a compiler change modifies `generated/
 - Preserve minimized observations; do not place raw customer state in evidence artifacts.
 - Update the relevant guide and example when changing a public interface.
 - Confirm `bun run check` and `bun test` pass.
+- If the CLI or package metadata changes, confirm `bun run package:check` passes. It builds the exact npm tarball, installs it in an isolated temporary project, and runs the packaged CLI under Node.js.
 
 By contributing, you agree that your contribution is licensed under Apache-2.0.
 Participation is governed by the [Code of Conduct](CODE_OF_CONDUCT.md).

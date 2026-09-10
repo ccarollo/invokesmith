@@ -3,6 +3,7 @@ import { createPrivateKey, createPublicKey } from "node:crypto";
 import { mkdir, readFile, realpath, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import packageManifest from "../../../package.json" with { type: "json" };
 import { canonicalize, contractDigest, lowerActionContract, validateActionContract } from "../../compiler/src/index.js";
 import type { Diagnostic } from "../../compiler/src/index.js";
 import { mcpTargetPlugin } from "../../../plugins/target-mcp/src/index.js";
@@ -32,6 +33,7 @@ Usage:
   invokesmith artifact verify --key <public.pem> <signed-artifact.json> [--json]
   invokesmith release decide --policy <signed-policy> --evidence <signed-evidence> --key <public.pem> --now <time> --contract-digest <digest> --release-digest <digest> [--revocations <file>] [--replacements <file>] --approved-by <id> --decided-at <time> [--out <file>] [--json]
   invokesmith release verify --policy <signed-policy> --evidence <signed-evidence> --key <public.pem> --now <time> --contract-digest <digest> --release-digest <digest> [--revocations <file>] [--replacements <file>] <signed-decision.json> [--json]
+  invokesmith --version
   invokesmith help
 `;
 
@@ -392,6 +394,11 @@ async function releaseVerify(rest: string[]): Promise<number> {
 
 export async function main(args: string[] = process.argv.slice(2)): Promise<number> {
   const [command, ...rest] = args;
+
+  if (command === "--version" || command === "-v" || command === "version") {
+    process.stdout.write(`${packageManifest.version}\n`);
+    return 0;
+  }
 
   if (!command || command === "help" || command === "--help" || command === "-h") {
     process.stdout.write(HELP);

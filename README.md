@@ -8,7 +8,24 @@ MCP can tell an agent how to call `refund_payment`, `reschedule_task`, or `delet
 
 > Developer preview: the contract format is `invokesmith.dev/v0alpha1`. It is intentionally unstable while real customer actions pressure-test the model.
 
-## Five-minute quick start
+## Install
+
+InvokeSmith is distributed as a self-contained Node.js CLI. The npm package has no runtime dependencies and does not require Bun.
+
+```sh
+npx invokesmith@next --help
+```
+
+Or install the command for repeated use:
+
+```sh
+npm install --global invokesmith@next
+invokesmith --version
+```
+
+Node.js 22 or newer is required. The first npm release is prepared but not yet published; until it is live, use the source quick start below.
+
+## Five-minute source quick start
 
 You need [Bun](https://bun.sh/) and Node.js 22 or newer.
 
@@ -84,6 +101,9 @@ bun run benchmark:outcome-gap
 # Build the standalone Node.js CLI
 bun run build
 node dist/invokesmith.js help
+
+# Verify the exact npm package in a clean temporary project
+bun run package:check
 ```
 
 Run the reference MCP server directly with `bun run start:demo`. See the [SmithTasks guide](examples/smithtasks/README.md) for identity, scopes, persistence, and confirmation behavior.
@@ -121,5 +141,7 @@ OutcomeGap compares InvokeSmith with a defined response-and-tool-call baseline. 
 ## Contributing and security
 
 Read [CONTRIBUTING.md](CONTRIBUTING.md) before proposing a change. Report vulnerabilities through the private process in [SECURITY.md](SECURITY.md), not a public issue.
+
+Maintainers can follow the [public packaging and release checklist](docs/publishing.md). The npm artifact is built only from this sanitized public repository.
 
 Licensed under the [Apache License 2.0](LICENSE).
