@@ -53,16 +53,17 @@ describe("outcome CLI", () => {
     }
   });
 
-  test("reproduces deliberate response, state, mutation, audit, and provider defects with stable exits", async () => {
-    const cases = [
-      ["wrong-response", 1, "assertion"],
-      ["wrong-state", 1, "assertion"],
-      ["wrong-tenant", 1, "assertion"],
-      ["extra-mutation", 1, "assertion"],
-      ["missing-audit", 1, "assertion"],
-      ["provider-failure", 3, "provider"]
-    ] as const;
-    for (const [defect, exitCode, failureClass] of cases) {
+  const defectCases = [
+    ["wrong-response", 1, "assertion"],
+    ["wrong-state", 1, "assertion"],
+    ["wrong-tenant", 1, "assertion"],
+    ["extra-mutation", 1, "assertion"],
+    ["missing-audit", 1, "assertion"],
+    ["provider-failure", 3, "provider"]
+  ] as const;
+
+  for (const [defect, exitCode, failureClass] of defectCases) {
+    test(`reproduces the ${defect} defect with a stable exit`, async () => {
       const directory = await mkdtemp(join(tmpdir(), "invokesmith-defect-test-"));
       try {
         const result = await run([
@@ -79,8 +80,8 @@ describe("outcome CLI", () => {
       } finally {
         await rm(directory, { recursive: true, force: true });
       }
-    }
-  }, 15_000);
+    }, 15_000);
+  }
 
   test("runs the bundled flagship outcome command under Node and reserves exit 2 for invalid configuration", async () => {
     const directory = await mkdtemp(join(tmpdir(), "invokesmith-node-cli-"));
